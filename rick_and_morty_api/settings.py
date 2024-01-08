@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_celery_beat",
     "drf_spectacular",
     "characters",
 ]
@@ -146,3 +147,10 @@ SPECTACULAR_SETTINGS = {
 }
 
 RICK_AND_MORTY_API_CHARACTERS_URL = "https://rickandmortyapi.com/api/character"
+
+
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_URL")
+CELERY_TIMEZONE = "Europe/Kyiv"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
